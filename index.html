@@ -102,8 +102,7 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+         drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
     var imageData = context.getImageData(0, 0, scaledWidth, scaledHeight);    
     var data = imageData.data;
 
