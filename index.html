@@ -105,9 +105,9 @@
           var data = imageData.data;
 
           function getPixelColor(x, y) {
-           const imageData = ctx.getImageData(x, y, 1, 1);
+           const imageData = context.getImageData(x, y, 1, 1);
            const data = imageData.data;
-           if(abs(data[1]-data[0])>40){
+           if (Math.abs(data[1] - data[0]) > 40) {
             return false;
            }
            else{
@@ -115,18 +115,16 @@
            }
          }
 function showResult(){
-    const x = 50; // X coordinate of the point
-    const y = 50; // Y coordinate of the point
-    const yesTable = new Array(8)
-    
-    // Efficiently set red and green channels to 0
-    for (var i = 0; i < data.length; i += 4) {
-        x+100;
-        var yellowOrNot = getPixelColor(x, y); 
-        yesTable[i] = yellowOrNot;
-    }
-    var resultText = document.getElementById("result");
-    resultText.innerHTML = "" + yesTable[0] + ", " + yesTable[1] + ", " + yesTable[2] + ", " + yesTable[3] + ", " + yesTable[4] + ", " + yesTable[5] + ", " + yesTable[6] + ", " + yesTable[7];
+  const yesTable = [];
+  for (let i = 0; i < 8; i++) {
+    let x = 50 + i * 100; // Sample across the image
+    let y = 50;           // Fixed y-value
+    let yellowOrNot = getPixelColor(x, y); 
+    yesTable.push(yellowOrNot);
+  }
+
+  const resultText = document.getElementById("result");
+  resultText.innerHTML = yesTable.join(", ");
 }
                 
         } // end of img.onload
@@ -153,7 +151,7 @@ function showResult(){
     <div data-role="content">	
       <h2>Push button to take picture.</h2>
 	    <p id="result">Results here:</p>  
-	    <button onclick="showResult();" class="w3-btn w3-black"> Click Here! </button>
+	    <button onclick="showResult();"> Click Here! </button>
       <div>
         Press orange button to create or choose image file:
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
