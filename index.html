@@ -113,7 +113,7 @@
     		console.log(`Pixel at (${x}, ${y}): R=${red}, G=${green}, B=${blue}`);
     
     		// Define a range for yellow: red and green are high, blue is low
-    		const isYellow = (red > 180 && green > 180 && blue < 100);
+    		const isYellow = (Math.abs(red-green) < 30 && blue < 100);
     		return isYellow;
 	}
 
