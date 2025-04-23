@@ -76,17 +76,6 @@
  }
 
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
-function showResult() {
-  const yesTable = [];
-  for (let i = 0; i < 8; i++) {
-    let x = 50 + i * 100;
-    let y = 50;
-    let yellowOrNot = getPixelColor(x, y); 
-    yesTable.push(yellowOrNot);
-  }
-  const resultText = document.getElementById("result");
-  resultText.innerHTML = yesTable.join(", ");
-}
  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
@@ -116,15 +105,21 @@ function showResult() {
           var data = imageData.data;
 
           function getPixelColor(x, y) {
-           const imageData = context.getImageData(x, y, 1, 1);
-           const data = imageData.data;
-           if (Math.abs(data[1] - data[0]) > 40) {
-            return false;
-           }
-           else{
-            return true;
-           }
-         }
+  		const pixelData = context.getImageData(x, y, 1, 1).data;
+  		return Math.abs(pixelData[1] - pixelData[0]) <= 40;
+	}
+
+	// Auto-run this after image is loaded and drawn
+	const yesTable = [];
+	for (let i = 0; i < 8; i++) {
+  		let x = 50 + i * 100;
+  		let y = 50;
+  		let yellowOrNot = getPixelColor(x, y); 
+  		yesTable.push(yellowOrNot);
+	}
+
+	// Show result immediately
+	document.getElementById("result").innerHTML = yesTable.join(", ");
                 
         } // end of img.onload
         
@@ -150,7 +145,6 @@ function showResult() {
     <div data-role="content">	
       <h2>Push button to take picture.</h2>
 	    <p id="result">Results here:</p>  
-	    <a href="#" data-role="button" onclick="showResult();">Click Here!</a>
       <div>
         Press orange button to create or choose image file:
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
