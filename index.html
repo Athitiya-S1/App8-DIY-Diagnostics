@@ -120,7 +120,9 @@
             return true;
            }
          }
-    const x = 50; // X coordinate of the point
+
+function showResult(){
+			const x = 50; // X coordinate of the point
     const y = 50; // Y coordinate of the point
     const yesTable = new Array(8)
     
@@ -131,8 +133,8 @@
         yesTable[i] = yellowOrNot;
     }
     var resultText = document.getElementById("result");
-			 resultText.innerHTML = "" + yesTable[0] + ", " + yesTable[1] + ", " + yesTable[2] + ", " + yesTable[3] + ", " + yesTable[4] + ", " + yesTable[5] + ", " + yesTable[6] + ", " + yesTable[7];
-   
+    resultText.innerHTML = "" + yesTable[0] + ", " + yesTable[1] + ", " + yesTable[2] + ", " + yesTable[3] + ", " + yesTable[4] + ", " + yesTable[5] + ", " + yesTable[6] + ", " + yesTable[7];
+}
                 
         } // end of img.onload
         
