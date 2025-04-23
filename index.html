@@ -103,38 +103,6 @@
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
 
          drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
-    var imageData = context.getImageData(0, 0, scaledWidth, scaledHeight);    
-    var data = imageData.data;
-
-          function getPixelColor(x, y) {
-           const imageData = ctx.getImageData(x, y, 1, 1);
-           const data = imageData.data;
-           if(abs(data[1]-data[0])>40){
-             data[1] = 0;
-            data[2] = 0;
-            data[3] = 0;
-            return false;
-           }
-           else{
-             data[1] = 0;
-            data[2] = 0;
-            data[3] = 0;
-            return true;
-           }
-         }
-    const x = 50; // X coordinate of the point
-    const y = 50; // Y coordinate of the point
-    const yesTable = new Array(8)
-    
-    // Efficiently set red and green channels to 0
-    for (var i = 0; i < data.length; i += 4) {
-        x+100;
-        var yellowOrNot = getPixelColor(x, y); 
-        yesTable[i] = yellowOrNot;
-    }
-
-    // Put the altered image data back onto the blueCanvas
-    context.putImageData(imageData, 0, 0);};
           
           
         } // end of img.onload
