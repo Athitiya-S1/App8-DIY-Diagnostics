@@ -108,21 +108,14 @@
            const imageData = ctx.getImageData(x, y, 1, 1);
            const data = imageData.data;
            if(abs(data[1]-data[0])>40){
-             data[1] = 0;
-            data[2] = 0;
-            data[3] = 0;
             return false;
            }
            else{
-             data[1] = 0;
-            data[2] = 0;
-            data[3] = 0;
             return true;
            }
          }
-
 function showResult(){
-			const x = 50; // X coordinate of the point
+    const x = 50; // X coordinate of the point
     const y = 50; // Y coordinate of the point
     const yesTable = new Array(8)
     
@@ -160,6 +153,7 @@ function showResult(){
     <div data-role="content">	
       <h2>Push button to take picture.</h2>
 	    <p id="result">Results here:</p>  
+	    <a onclick="showResult();" class="w3-btn w3-black"> Click Here! </a>
       <div>
         Press orange button to create or choose image file:
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
