@@ -109,6 +109,7 @@
   		const red = pixelData[0];
   		const green = pixelData[1];
   		return Math.abs(red - green) <= 40;
+		console.log(`Pixel at (${x}, ${y}): R=${red}, G=${green}, B=${pixelData[2]}`);
 	}
 
 	// Auto-run this after image is loaded and drawn
