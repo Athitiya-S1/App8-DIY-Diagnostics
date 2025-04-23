@@ -106,7 +106,9 @@
 
           function getPixelColor(x, y) {
   		const pixelData = context.getImageData(x, y, 1, 1).data;
-  		return Math.abs(pixelData[1] - pixelData[0]) <= 40;
+  		const red = pixelData[0];
+  		const green = pixelData[1];
+  		return Math.abs(red - green) <= 40;
 	}
 
 	// Auto-run this after image is loaded and drawn
